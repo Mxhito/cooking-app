@@ -65,13 +65,13 @@ Map<String, dynamic> _$APIRecipeToJson(APIRecipe instance) => <String, dynamic>{
 
 APIIngredients _$APIIngredientsFromJson(Map<String, dynamic> json) {
   return APIIngredients(
-    name: json['name'] as String,
+    name: json['text'] as String,
     weight: (json['weight'] as num).toDouble(),
   );
 }
 
 Map<String, dynamic> _$APIIngredientsToJson(APIIngredients instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'text': instance.name,
       'weight': instance.weight,
     };

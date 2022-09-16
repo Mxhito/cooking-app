@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../colors.dart';
 import '../widgets/custom_dropdown.dart';
 import 'dart:convert';
 import '../../network/recipe_model.dart';
@@ -19,7 +18,6 @@ class RecipeList extends StatefulWidget {
 
 class _RecipeListState extends State<RecipeList> {
   static const String prefSearchKey = 'previousSearches';
-
   late TextEditingController searchTextController;
   final ScrollController _scrollController = ScrollController();
   List currentSearchList = [];
@@ -112,7 +110,6 @@ class _RecipeListState extends State<RecipeList> {
         child: Row(
           children: [
             IconButton(
-              icon: const Icon(Icons.search),
               onPressed: () {
                 startSearch(searchTextController.text);
                 final currentFocus = FocusScope.of(context);
@@ -120,6 +117,7 @@ class _RecipeListState extends State<RecipeList> {
                   currentFocus.unfocus();
                 }
               },
+              icon: const Icon(Icons.search),
             ),
             const SizedBox(
               width: 6.0,
@@ -132,6 +130,7 @@ class _RecipeListState extends State<RecipeList> {
                     decoration: const InputDecoration(
                         border: InputBorder.none, hintText: 'Search'),
                     autofocus: false,
+                    controller: searchTextController,
                     textInputAction: TextInputAction.done,
                     onSubmitted: (value) {
                       if (!previousSearches.contains(value)) {
@@ -139,7 +138,6 @@ class _RecipeListState extends State<RecipeList> {
                         savePreviousSearches();
                       }
                     },
-                    controller: searchTextController,
                   )),
                   PopupMenuButton<String>(
                     icon: const Icon(
@@ -154,15 +152,14 @@ class _RecipeListState extends State<RecipeList> {
                       return previousSearches
                           .map<CustomDropdownMenuItem<String>>((String value) {
                         return CustomDropdownMenuItem<String>(
-                          text: value,
-                          value: value,
-                          callback: () {
-                            setState(() {
-                              previousSearches.remove(value);
-                              Navigator.pop(context);
+                            text: value,
+                            value: value,
+                            callback: () {
+                              setState(() {
+                                previousSearches.remove(value);
+                                Navigator.pop(context);
+                              });
                             });
-                          },
-                        );
                       }).toList();
                     },
                   ),
@@ -183,6 +180,7 @@ class _RecipeListState extends State<RecipeList> {
       currentStartPosition = 0;
       hasMore = true;
       value = value.trim();
+
       if (!previousSearches.contains(value)) {
         previousSearches.add(value);
         savePreviousSearches();
