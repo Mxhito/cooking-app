@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'recipe_model.g.dart';
 
 @JsonSerializable()
@@ -7,7 +8,6 @@ class APIRecipeQuery {
       _$APIRecipeQueryFromJson(json);
 
   Map<String, dynamic> toJson() => _$APIRecipeQueryToJson(this);
-
   @JsonKey(name: 'q')
   String query;
   int from;
@@ -36,6 +36,7 @@ class APIHits {
 
   factory APIHits.fromJson(Map<String, dynamic> json) =>
       _$APIHitsFromJson(json);
+
   Map<String, dynamic> toJson() => _$APIHitsToJson(this);
 }
 
@@ -61,21 +62,22 @@ class APIRecipe {
 
   factory APIRecipe.fromJson(Map<String, dynamic> json) =>
       _$APIRecipeFromJson(json);
+
   Map<String, dynamic> toJson() => _$APIRecipeToJson(this);
+}
 
-  String getCalories(double? calories) {
-    if (calories == null) {
-      return '0 KCAL';
-    }
-    return calories.floor().toString() + 'KCAL';
+String getCalories(double? calories) {
+  if (calories == null) {
+    return '0 KCAL';
   }
+  return calories.floor().toString() + ' KCAL';
+}
 
-  String getWeight(double? weight) {
-    if (weight == null) {
-      return '0g';
-    }
-    return weight.floor().toString() + 'g';
+String getWeight(double? weight) {
+  if (weight == null) {
+    return '0g';
   }
+  return weight.floor().toString() + 'g';
 }
 
 @JsonSerializable()
@@ -91,5 +93,6 @@ class APIIngredients {
 
   factory APIIngredients.fromJson(Map<String, dynamic> json) =>
       _$APIIngredientsFromJson(json);
+
   Map<String, dynamic> toJson() => _$APIIngredientsToJson(this);
 }
