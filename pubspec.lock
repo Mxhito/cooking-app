@@ -134,6 +134,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  chopper:
+    dependency: "direct overridden"
+    description:
+      name: chopper
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
+  chopper_generator:
+    dependency: "direct dev"
+    description:
+      name: chopper_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
   clock:
     dependency: transitive
     description:
@@ -276,7 +290,7 @@ packages:
     source: hosted
     version: "2.0.0"
   http:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -325,12 +339,12 @@ packages:
     source: hosted
     version: "6.3.2"
   logging:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: logging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   matcher:
     dependency: transitive
     description:
